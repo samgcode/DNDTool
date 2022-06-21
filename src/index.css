@@ -1,3 +1,34 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+input {
+  @apply p-2 focus:outline-none border-2 border-gray-400 max-h-10 rounded-lg focus:bg-gray-200 transition hover:bg-gray-100 hover:-translate-y-0.5 active:bg-gray-300 shadow-lg
+}
+
+input[type=checkbox]
+{
+  -ms-transform: scale(2); 
+  -moz-transform: scale(2);
+  -webkit-transform: scale(2);
+  -o-transform: scale(2);
+  transform: scale(2);
+  padding: 10px;
+  @apply ml-1 hover:bg-gray-200 shadow-lg
+}
+
+.card {
+  @apply rounded-xl shadow-lg
+}
+
+.btn {
+  @apply p-1 px-3 rounded-lg border-2 hover:-translate-y-0.5 font-semibold shadow-lg transition
+}
+
+.btn-standard {
+  @apply border-gray-400 hover:bg-gray-100 active:bg-gray-200 text-gray-400
+}
+
+.btn-success {
+  @apply border-green-400 hover:bg-green-100 active:bg-green-200 text-green-400
+}

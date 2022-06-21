@@ -1,11 +1,21 @@
-import './App.css'
+import UserForm from './Components/UserForm'
 
 function App() {
+  
   return (
     <div>
-      <h1 className='text-3xl text-blue-500'>:0</h1>
+      <UserForm></UserForm>
     </div>
   );
 }
 
 export default App
+
+/*
+character {
+  name
+  initiative
+  hp
+  npc
+}
+*/
