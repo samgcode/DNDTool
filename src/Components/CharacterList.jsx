@@ -8,34 +8,41 @@ function CharacterList({ name }) {
   const [characters, setCharacters] = useState(null)
 
   useEffect(() => {
-    characterService.callback = (data) => {
-      const unsortedData = data.map(character => {
-        if(character.isNPC && !name) {
-          return {
-            ...character,
-            initiative: Math.floor(Math.random()*20+1) + character.initiativeModifier
-          }
+    async function setup() {
+      const data = await characterService.getCharacters(name)
+      updateCharacters(data)
+      characterService.callback = updateCharacters
+    }
+    setup()
+  }, [])
+  
+  async function updateCharacters(data) {
+    const unsortedData = data.map(character => {
+      if(character.isNPC && !name) {
+        return {
+          ...character,
+          initiative: Math.floor(Math.random()*20+1) + character.initiativeModifier
+        }
+      } else {
+        if(!name || character.name === name) {
+          return character
+        }
+        return undefined
+      }
+    })
+    let sortedData = unsortedData.filter(a => a)
+    if(!name) {
+      sortedData = unsortedData.sort((a,b) => {
+        if(b.initiative < a.initiative) {
+          return -1
         } else {
-          if(!name || character.name === name) {
-            return character
-          }
-          return undefined
+          return 1
         }
       })
-      let sortedData = unsortedData.filter(a => a)
-      if(!name) {
-        sortedData = unsortedData.sort((a,b) => {
-          if(b.initiative < a.initiative) {
-            return -1
-          } else {
-            return 1
-          }
-        })
-      }
-      setCharacters(sortedData)
     }
-  }, [])
-
+    setCharacters(sortedData)
+  }
+  
   return (
     <div className='card'>
       <ul className=''>

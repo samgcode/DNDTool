@@ -3,7 +3,7 @@ const { set, ref, onValue, get, child } = require("firebase/database")
 class CharacterService {
   constructor(serviceLocator) {
     this.db = serviceLocator.database
-    this.callback = (data) => { console.log(data); }
+    this.callback = (data) => { console.log(data) }
     onValue(ref(this.db, 'characters/'), snapshot => { this.handleCalback(snapshot) })
   }
 
@@ -19,7 +19,7 @@ class CharacterService {
     })
   }
 
-  async getCharacters(name) {
+  async getCharacters(name = '') {
     let data
     try {
       const snapshot = await get(child(ref(this.db), `characters/${name}`))
@@ -30,6 +30,9 @@ class CharacterService {
       }
     } catch (error) {
       console.error(error)
+    }
+    if(data.maxHp != undefined) {
+      return [data]
     }
     return this.convertJsonToArray(data)
   }
