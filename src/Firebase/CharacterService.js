@@ -19,10 +19,10 @@ class CharacterService {
     })
   }
 
-  async getCharacters() {
+  async getCharacters(name) {
     let data
     try {
-      const snapshot = await get(child(ref(this.db), `characters/`))
+      const snapshot = await get(child(ref(this.db), `characters/${name}`))
       if (snapshot.exists()) {
         data = snapshot.val()
       } else {
