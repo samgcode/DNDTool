@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 
 import serviceLocator from "../Firebase/serviceLocator"
+import Character from "./Character"
 
 function CharacterList() {
   const characterService = serviceLocator.services.characterService
@@ -33,12 +34,8 @@ function CharacterList() {
     <div className='card'>
       <ul className=''>
         {(characters === null) ? null : characters.map(character => {
-          return <li className='flex content-center justify-around p-5' key={character.name}>
-            <h1 className='text-lg my-auto pr-2 w-10'>{character.name}</h1>
-            <h1 className='text-lg my-auto pr-2 w-10'>{character.currentHp}/{character.maxHp}</h1>
-            <h1 className='text-lg my-auto pr-2 w-10'>{character.initiative}</h1>
-            <h1 className='text-lg my-auto pr-2 w-10'>{character.isNPC ? 'npc' : 'player'}</h1>
-          </li>
+        
+          return <Character key={character.name} character={character}></Character>
         })}
       </ul>
     </div>
