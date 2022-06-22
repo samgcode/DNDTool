@@ -18,7 +18,7 @@ input[type=checkbox]
 }
 
 .card {
-  @apply rounded-xl shadow-lg
+  @apply rounded-xl shadow-lg m-10
 }
 
 .btn {

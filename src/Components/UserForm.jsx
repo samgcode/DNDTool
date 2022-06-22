@@ -41,7 +41,7 @@ function UserForm() {
 
   return (
     <div>
-      <form className='card m-10 border' onSubmit={handleSubmit}>
+      <form className='card' onSubmit={handleSubmit}>
         <div className='flex content-center p-5'>
           <h1 className='text-lg my-auto pr-2'>Name:</h1>
           <input className='my-auto' name='name' value={formData.name} onChange={handleChange} placeholder='Name'></input>
