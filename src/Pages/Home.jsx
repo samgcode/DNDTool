@@ -22,20 +22,23 @@ function Home() {
   }, [])
 
   return (
-    <ul className='w-full flex justify-center pt-24'>
-      {(characters === null) ? null : characters.map((character) => {
-        return <li key={character.name}>
-          <Link to={`/player/${character.name}`}>
-            <button className='btn mx-1'>{character.name}</button>
-          </Link>
-        </li>
-      })}
-      <li>
+    <div>
+      <ul className='w-full flex justify-center pt-24'>
+        {(characters === null) ? null : characters.map((character) => {
+          return <li key={character.name}>
+            <Link to={`/player/${character.name}`}>
+              <button className='btn mx-1'>{character.name}</button>
+            </Link>
+          </li>
+        })}
+      </ul>
+      <div className='w-full flex justify-center pt-2'>
         <Link to='/admin'>
           <button className='btn btn-success mx-1'>Admin</button>
         </Link>
-      </li>
-    </ul>
+        <a href='https://github.com/samgcode/DNDTool' className='btn btn-success mx-1'>Source Code</a>
+      </div>
+    </div>
   )
 }
 
