@@ -15,25 +15,25 @@ function CharacterList({ name }) {
     }
     setup()
   }, [])
-  
+
   async function updateCharacters(data) {
     const unsortedData = data.map(character => {
-      if(character.isNPC && !name) {
+      if (character.isNPC && !name) {
         return {
           ...character,
-          initiative: Math.floor(Math.random()*20+1) + character.initiativeModifier
+          initiative: Math.floor(Math.random() * 20 + 1) + character.initiativeModifier
         }
       } else {
-        if(!name || character.name === name) {
+        if (!name || character.name === name) {
           return character
         }
         return undefined
       }
     })
     let sortedData = unsortedData.filter(a => a)
-    if(!name) {
-      sortedData = unsortedData.sort((a,b) => {
-        if(b.initiative < a.initiative) {
+    if (!name) {
+      sortedData = unsortedData.sort((a, b) => {
+        if (b.initiative < a.initiative) {
           return -1
         } else {
           return 1
@@ -42,10 +42,11 @@ function CharacterList({ name }) {
     }
     setCharacters(sortedData)
   }
-  
+
   return (
     <div className='card'>
       <ul className=''>
+        <Character showHeadings={true}></Character>
         {(characters === null) ? null : characters.map(character => {
           return <Character key={character.name} character={character}></Character>
         })}
