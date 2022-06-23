@@ -11,7 +11,7 @@ function Character({ character, showHeadings = false }) {
           <h1 className='heading'>Initiative Modifier</h1>
           <h1 className='heading'>Initiative</h1>
         </li> :
-        <li className='flex content-center justify-around p-5'>
+        <li className={character.isTurn ? 'row border-2 rounded-lg border-green-400' : 'row'}>
           <h1 className='heading'>{character.name}</h1>
           <h1 className='heading'>{character.currentHp}/{character.maxHp} hp</h1>
           <h1 className='heading'>+{character.initiativeModifier}</h1>

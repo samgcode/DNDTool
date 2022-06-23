@@ -72,7 +72,7 @@ function PlayerForm({ name }) {
           <input className='my-auto w-14' name='initiative' value={formData.initiative} onChange={handleChange} placeholder='Initiative' type='number'></input>
           <h1 className='text-lg my-auto px-2' >Healing:</h1>
           <input className='my-auto' name='healing' value={formData.healing} onChange={handleChange} placeholder='Change in health' type='number'></input>
-          <button className='btn btn-success my-auto ml-10'>Add</button>
+          <button className='btn btn-success my-auto ml-10'>Update</button>
         </div>
       </form>
     </div>

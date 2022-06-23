@@ -1,3 +1,7 @@
 .heading {
   @apply text-lg my-auto pr-2 w-24 text-center
 }
+
+.row {
+  @apply flex content-center justify-around p-5
+}

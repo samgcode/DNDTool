@@ -16,13 +16,10 @@ function CharacterList({ name }) {
     setup()
   }, [])
 
-  async function updateCharacters(data) {
-    const unsortedData = data.map(character => {
+  async function updateCharacters(data) { //TODO: refactor
+    const unsortedData = data.filter(character => {
       if (character.isNPC && !name) {
-        return {
-          ...character,
-          initiative: Math.floor(Math.random() * 20 + 1) + character.initiativeModifier
-        }
+        return character
       } else {
         if (!name || character.name === name) {
           return character
@@ -30,9 +27,23 @@ function CharacterList({ name }) {
         return undefined
       }
     })
-    let sortedData = unsortedData.filter(a => a)
+    setCharacters(unsortedData)
+  }
+
+  function rollInitiative() {
+    const data = characters.map(character => {
+      if (character.isNPC) {
+        return {
+          ...character,
+          initiative: Math.floor(Math.random() * 20 + 1) + character.initiativeModifier
+        }
+      } else {
+        return character
+      }
+    })
+    let sortedData = data.filter(a => a)
     if (!name) {
-      sortedData = unsortedData.sort((a, b) => {
+      sortedData = data.sort((a, b) => {
         if (b.initiative < a.initiative) {
           return -1
         } else {
@@ -41,17 +52,23 @@ function CharacterList({ name }) {
       })
     }
     setCharacters(sortedData)
-  }
 
+  }
   return (
-    <div className='card'>
-      <ul className=''>
-        <Character showHeadings={true}></Character>
-        {(characters === null) ? null : characters.map(character => {
-          return <Character key={character.name} character={character}></Character>
-        })}
-      </ul>
-    </div>
+    <>
+      <div className='card'>
+        <ul className=''>
+          <Character showHeadings={true}></Character>
+          {(characters === null) ? null : characters.map(character => {
+            return <Character key={character.name} character={character}></Character>
+          })}
+        </ul>
+      </div>
+      {(name === undefined) ? <div className='m-10 flex'>
+        <button className='btn btn-success-filled' onClick={rollInitiative}>Roll initiative</button>
+        <button className='btn btn-success-filled ml-3'>Next turn</button>
+      </div> : null}
+    </>
   )
 }
 
