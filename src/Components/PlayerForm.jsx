@@ -59,13 +59,13 @@ function PlayerForm({ name }) {
       <form className='card' onSubmit={handleSubmit}>
         <div className='flex content-center p-5'>
           <h1 className='text-lg my-auto pr-2'>Name:</h1>
-          <input className='my-auto' name='name' value={formData.name}readOnly></input>
+          <input className='my-auto input' name='name' value={formData.name}readOnly></input>
           <h1 className='text-lg my-auto px-2'>Initiative mod:</h1>
-          <input className='my-auto w-12' name='initiativeModifier' value={formData.initiativeModifier} onChange={handleChange} placeholder='Initiative modifier' type='number'></input>
+          <input className='my-auto input w-12' name='initiativeModifier' value={formData.initiativeModifier} onChange={handleChange} placeholder='Initiative modifier' type='number'></input>
           <h1 className='text-lg my-auto px-2' >Initiative:</h1>
-          <input className='my-auto w-14' name='initiative' value={formData.initiative} onChange={handleChange} placeholder='Initiative' type='number'></input>
+          <input className='my-auto input w-14' name='initiative' value={formData.initiative} onChange={handleChange} placeholder='Initiative' type='number'></input>
           <h1 className='text-lg my-auto px-2' >Healing:</h1>
-          <input className='my-auto' name='healing' value={formData.healing} onChange={handleChange} placeholder='Change in health' type='number'></input>
+          <input className='my-auto input' name='healing' value={formData.healing} onChange={handleChange} placeholder='Change in health' type='number'></input>
           <button className='btn btn-success my-auto ml-10'>Update</button>
         </div>
       </form>

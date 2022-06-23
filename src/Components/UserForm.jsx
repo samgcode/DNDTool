@@ -44,13 +44,13 @@ function UserForm() {
       <form className='card' onSubmit={handleSubmit}>
         <div className='flex content-center p-5'>
           <h1 className='text-lg my-auto pr-2'>Name:</h1>
-          <input className='my-auto' name='name' value={formData.name} onChange={handleChange} placeholder='Name'></input>
+          <input className='my-auto input' name='name' value={formData.name} onChange={handleChange} placeholder='Name'></input>
           <h1 className='text-lg my-auto px-2'>Initiative:</h1>
-          <input className='my-auto' name='initiativeMod' value={formData.initiativeMod} onChange={handleChange} placeholder='Initiative modifier' type='number'></input>
+          <input className='my-auto input' name='initiativeMod' value={formData.initiativeMod} onChange={handleChange} placeholder='Initiative modifier' type='number'></input>
           <h1 className='text-lg my-auto px-2' >HP:</h1>
-          <input className='my-auto' name='hp' value={formData.hp} onChange={handleChange} placeholder='Maximum HP' type='number'></input>
+          <input className='my-auto input' name='hp' value={formData.hp} onChange={handleChange} placeholder='Maximum HP' type='number'></input>
           <h1 className='text-lg my-auto px-2'>Is npc:</h1>
-          <input className='my-auto' name='isNPC' checked={formData.isNPC} onChange={handleChange} key={Math.random()} type="checkbox"></input>
+          <input className='my-auto input-checkbox' name='isNPC' checked={formData.isNPC} onChange={handleChange} key={Math.random()} type="checkbox"></input>
           <button className='btn btn-success my-auto ml-10'>Add</button>
         </div>
       </form>

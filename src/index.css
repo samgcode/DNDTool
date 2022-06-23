@@ -2,11 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-input {
+.input {
   @apply p-2 focus:outline-none border-2 border-gray-400 max-h-10 rounded-lg focus:bg-gray-200 transition hover:bg-gray-100 hover:-translate-y-0.5 active:bg-gray-300 shadow-lg
 }
 
-input[type=checkbox]
+.input-checkbox
 {
   -ms-transform: scale(2); 
   -moz-transform: scale(2);

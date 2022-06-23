@@ -1,7 +1,11 @@
 .heading {
-  @apply text-lg my-auto pr-2 w-24 text-center
+  @apply text-lg my-auto pr-2 w-32 text-center
 }
 
 .row {
   @apply flex content-center justify-around p-5
+}
+
+.field {
+  @apply p-1 hover:border focus:border focus:outline-none rounded-lg text-center text-lg
 }
