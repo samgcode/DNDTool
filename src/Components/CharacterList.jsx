@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 
 import serviceLocator from '../Firebase/serviceLocator'
 import Character from './Character'
@@ -27,21 +28,33 @@ function CharacterList({ name }) {
         return undefined
       }
     })
-    setCharacters(unsortedData)
+    setCharacters(sortCharacters(unsortedData))
   }
 
-  function rollInitiative() {
-    const data = characters.map(character => {
+  async function rollInitiative() {
+    let data = characters.map(character => {
       if (character.isNPC) {
         return {
           ...character,
+          isTurn: false,
           initiative: Math.floor(Math.random() * 20 + 1) + character.initiativeModifier
         }
       } else {
-        return character
+        return {
+          ...character,
+          isTurn: false
+        }
       }
     })
-    let sortedData = data.filter(a => a)
+    data = data.filter(a => a)
+    const sortedData = sortCharacters(data)
+    sortedData[0].isTurn = true
+    updateDatabase(sortedData)
+    setCharacters(sortedData)
+  }
+
+  function sortCharacters(data) {
+    let sortedData = data
     if (!name) {
       sortedData = data.sort((a, b) => {
         if (b.initiative < a.initiative) {
@@ -51,9 +64,31 @@ function CharacterList({ name }) {
         }
       })
     }
-    setCharacters(sortedData)
-
+    return sortedData
   }
+
+  function updateDatabase(data) {
+    data.forEach(character => {
+      characterService.addCharacter(character.name, character.initiativeModifier, character.initiative, character.maxHp, character.currentHp, character.isNPC, character.isTurn)
+    })
+  }
+
+  function nextTurn() {
+    let turnIndex = 0
+    for (let index in characters) {
+      if (characters[index].isTurn) {
+        turnIndex = parseInt(index)
+      }
+    }
+    let nextIndex = parseInt(turnIndex) + 1
+    if (turnIndex === characters.length - 1) {
+      nextIndex = 0
+    }
+    characters[turnIndex].isTurn = false
+    characters[nextIndex].isTurn = true
+    updateDatabase([characters[turnIndex], characters[nextIndex]])
+  }
+
   return (
     <>
       <div className='card'>
@@ -64,10 +99,13 @@ function CharacterList({ name }) {
           })}
         </ul>
       </div>
-      {(name === undefined) ? <div className='m-10 flex'>
-        <button className='btn btn-success-filled' onClick={rollInitiative}>Roll initiative</button>
-        <button className='btn btn-success-filled ml-3'>Next turn</button>
-      </div> : null}
+      <div className='flex m-10'>
+        <Link to='/' className='btn btn-success-filled'>Home</Link>
+        {(name === undefined) ? <div className='flex'>
+          <button className='btn btn-success-filled ml-3' onClick={rollInitiative}>Roll initiative</button>
+          <button className='btn btn-success-filled ml-3' onClick={nextTurn}>Next turn</button>
+        </div> : null}
+      </div>
     </>
   )
 }

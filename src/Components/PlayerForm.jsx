@@ -15,13 +15,8 @@ function PlayerForm({ name }) {
     getCharacter()
   }, [])
   
-  useEffect(() => {
-    console.log(formData)
-  }, [formData])
-  
   async function getCharacter() {
     const character = await characterService.getCharacters(name)
-    console.log(character[0])
     setFormdata({...character[0], healing: ''})
   }
 
@@ -48,7 +43,6 @@ function PlayerForm({ name }) {
 
   function handleSubmit(event) {
     event.preventDefault()
-    console.log(formData)
     let health = parseInt(formData.currentHp)+formData.healing
     if(health > formData.maxHp) {
       health = formData.maxHp
