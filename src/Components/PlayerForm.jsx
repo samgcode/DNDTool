@@ -17,6 +17,7 @@ function PlayerForm({ name }) {
   
   async function getCharacter() {
     const character = await characterService.getCharacters(name)
+    console.log(character)
     setFormdata({...character[0], healing: ''})
   }
 
@@ -58,14 +59,9 @@ function PlayerForm({ name }) {
     <div>
       <form className='card' onSubmit={handleSubmit}>
         <div className='flex content-center p-5'>
-          <h1 className='text-lg my-auto pr-2'>Name:</h1>
-          <input className='my-auto input' name='name' value={formData.name}readOnly></input>
-          <h1 className='text-lg my-auto px-2'>Initiative mod:</h1>
-          <input className='my-auto input w-12' name='initiativeModifier' value={formData.initiativeModifier} onChange={handleChange} placeholder='Initiative modifier' type='number'></input>
-          <h1 className='text-lg my-auto px-2' >Initiative:</h1>
-          <input className='my-auto input w-14' name='initiative' value={formData.initiative} onChange={handleChange} placeholder='Initiative' type='number'></input>
           <h1 className='text-lg my-auto px-2' >Healing:</h1>
           <input className='my-auto input' name='healing' value={formData.healing} onChange={handleChange} placeholder='Change in health' type='number'></input>
+          <h1 className='text-lg my-auto pl-6 pr-2'>- for damage / + for healing</h1>
           <button className='btn btn-success my-auto ml-10'>Update</button>
         </div>
       </form>

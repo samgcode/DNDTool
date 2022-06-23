@@ -28,6 +28,7 @@ function CharacterList({ name }) {
         return undefined
       }
     })
+    console.log(unsortedData)
     setCharacters(sortCharacters(unsortedData))
   }
 
@@ -95,7 +96,7 @@ function CharacterList({ name }) {
         <ul className=''>
           <Character showHeadings={true}></Character>
           {(characters === null) ? null : characters.map(character => {
-            return <Character key={character.name} character={character}></Character>
+            return <Character key={Math.random()} character={character}></Character>
           })}
         </ul>
       </div>
