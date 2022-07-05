@@ -29,6 +29,10 @@ function Character({ character, showHeadings = false }) {
       ...formData,
       [name]: value
     })
+  }
+  
+  function handleSubmit(event) {
+    event.preventDefault()
     characterService.addCharacter(formData.name, formData.initiativeModifier, formData.initiative, formData.maxHp, formData.currentHp, formData.isNPC, formData.isTurn)
   }
 
@@ -41,20 +45,20 @@ function Character({ character, showHeadings = false }) {
           <h1 className='heading'>Initiative Modifier</h1>
           <h1 className='heading'>Initiative</h1>
         </li> :
-        <form className={character.isTurn ? 'row border-2 rounded-lg border-green-400' : 'row'} onSubmit={handleChange} key={Math.random()}>
-          <input className='field w-32' name='name' onChange={handleChange} value={formData.name} type='text' onBlur={handleChange} key={Math.random()}></input>
+        <form className={character.isTurn ? 'row border-2 rounded-lg border-green-400' : 'row'} onSubmit={handleSubmit}>
+          <input className='field w-32' name='name' onChange={handleChange} value={formData.name} type='text' onBlur={handleSubmit}></input>
           <div className='flex content-center w-32 justify-center'>
-            <input className='field w-10' name='currentHp' onChange={handleChange} value={formData.currentHp} type='text' onBlur={handleChange} key={Math.random()}></input>
+            <input className='field w-10' name='currentHp' onChange={handleChange} value={formData.currentHp} type='text' onBlur={handleSubmit}></input>
             <h1 className='text-lg my-auto pr-2 text-center pl-1'>/</h1>
-            <input className='field w-10' name='maxHp' onChange={handleChange} value={formData.maxHp} type='text' onBlur={handleChange} key={Math.random()}></input>
+            <input className='field w-10' name='maxHp' onChange={handleChange} value={formData.maxHp} type='text' onBlur={handleSubmit}></input>
             <h1 className='text-lg my-auto pr-2 text-center'>hp</h1>
           </div>
           <div className='flex w-32 justify-center'>
             <h1 className='text-lg my-auto pr-2 text-center -mr-2'>+</h1>
-            <input className='field w-10' name='initiativeModifier' onChange={handleChange} value={formData.initiativeModifier} type='number' onBlur={handleChange} key={Math.random()}></input>
+            <input className='field w-10' name='initiativeModifier' onChange={handleChange} value={formData.initiativeModifier} type='number' onBlur={handleSubmit}></input>
           </div>
           <div className='flex w-32 justify-center'>
-            <input className='field w-16' name='initiative' onChange={handleChange} value={formData.initiative} type='number' onBlur={handleChange} key={Math.random()}></input>
+            <input className='field w-16' name='initiative' onChange={handleChange} value={formData.initiative} type='number' onBlur={handleChange}></input>
           </div>
         </form>
       }
