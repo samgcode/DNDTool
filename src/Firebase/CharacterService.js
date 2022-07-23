@@ -31,7 +31,7 @@ class CharacterService {
     } catch (error) {
       console.error(error)
     }
-    if(data.maxHp != undefined) {
+    if (data.maxHp != undefined) {
       return [data]
     }
     return this.convertJsonToArray(data)

@@ -6,8 +6,7 @@
   @apply p-2 focus:outline-none border-2 border-gray-400 max-h-10 rounded-lg focus:bg-gray-200 transition hover:bg-gray-100 hover:-translate-y-0.5 active:bg-gray-300 shadow-lg
 }
 
-.input-checkbox
-{
+.input-checkbox {
   -ms-transform: scale(2); 
   -moz-transform: scale(2);
   -webkit-transform: scale(2);
@@ -18,7 +17,7 @@
 }
 
 .card {
-  @apply rounded-xl shadow-lg m-10
+  @apply rounded-xl shadow-lg m-10 sm:flex-col flex-row flex
 }
 
 .btn {

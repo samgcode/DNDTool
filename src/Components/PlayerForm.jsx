@@ -14,11 +14,11 @@ function PlayerForm({ name }) {
   useEffect(() => {
     getCharacter()
   }, [])
-  
+
   async function getCharacter() {
     const character = await characterService.getCharacters(name)
     console.log(character)
-    setFormdata({...character[0], healing: ''})
+    setFormdata({ ...character[0], healing: '' })
   }
 
   function handleChange(event) {
@@ -44,11 +44,11 @@ function PlayerForm({ name }) {
 
   function handleSubmit(event) {
     event.preventDefault()
-    let health = parseInt(formData.currentHp)+formData.healing
-    if(health > formData.maxHp) {
+    let health = parseInt(formData.currentHp) + formData.healing
+    if (health > formData.maxHp) {
       health = formData.maxHp
     }
-    if(health < 0) {
+    if (health < 0) {
       health = 0
     }
     characterService.addCharacter(formData.name, formData.initiativeModifier, formData.initiative, formData.maxHp, health, formData.isNPC, false)
@@ -58,7 +58,7 @@ function PlayerForm({ name }) {
   return (
     <div>
       <form className='card' onSubmit={handleSubmit}>
-        <div className='flex content-center p-5'>
+        <div className='flex sm:flex-row flex-col content-center p-5'>
           <h1 className='text-lg my-auto px-2' >Healing:</h1>
           <input className='my-auto input' name='healing' value={formData.healing} onChange={handleChange} placeholder='Change in health' type='number'></input>
           <h1 className='text-lg my-auto pl-6 pr-2'>- for damage / + for healing</h1>

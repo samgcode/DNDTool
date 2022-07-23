@@ -17,12 +17,12 @@ function UserForm() {
 
     const type = event.target.type
     const name = event.target.name
-    
+
     let value = type === 'checkbox' ? event.target.checked : event.target.value
-    
-    if(type === 'number') {
+
+    if (type === 'number') {
       value = parseInt(value)
-      if(value < 0) {
+      if (value < 0) {
         value = 0
       }
     }
