@@ -39,7 +39,7 @@ function Character({ character, showHeadings = false }) {
   return (
     <div>
       {(showHeadings) ?
-        <li className='row border-b-4'>
+        <li className='row sm:border-b-4 sm:border-r-0 border-r-4'>
           <h1 className='heading'>Name</h1>
           <h1 className='heading'>Health</h1>
           <h1 className='heading'>Initiative Modifier</h1>
