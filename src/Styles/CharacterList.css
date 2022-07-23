@@ -3,7 +3,7 @@
 }
 
 .row {
-  @apply flex content-center justify-around p-5
+  @apply content-center justify-around p-5 sm:flex-row flex-col flex
 }
 
 .field {

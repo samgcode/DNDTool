@@ -93,7 +93,7 @@ function CharacterList({ name }) {
   return (
     <>
       <div className='card'>
-        <ul className=''>
+        <ul className='flex sm:flex-col flex-row'>
           <Character showHeadings={true}></Character>
           {(characters === null) ? null : characters.map(character => {
             return <Character key={Math.random()} character={character}></Character>

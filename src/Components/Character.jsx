@@ -30,7 +30,7 @@ function Character({ character, showHeadings = false }) {
       [name]: value
     })
   }
-  
+
   function handleSubmit(event) {
     event.preventDefault()
     characterService.addCharacter(formData.name, formData.initiativeModifier, formData.initiative, formData.maxHp, formData.currentHp, formData.isNPC, formData.isTurn)
@@ -39,7 +39,7 @@ function Character({ character, showHeadings = false }) {
   return (
     <div>
       {(showHeadings) ?
-        <li className='flex content-center justify-around p-5 py-2 border-b-4'>
+        <li className='row border-b-4'>
           <h1 className='heading'>Name</h1>
           <h1 className='heading'>Health</h1>
           <h1 className='heading'>Initiative Modifier</h1>
