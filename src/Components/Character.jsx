@@ -58,7 +58,7 @@ function Character({ character, showHeadings = false }) {
             <input className='field w-10' name='initiativeModifier' onChange={handleChange} value={formData.initiativeModifier} type='number' onBlur={handleSubmit}></input>
           </div>
           <div className='flex w-32 justify-center'>
-            <input className='field w-16' name='initiative' onChange={handleChange} value={formData.initiative} type='number' onBlur={handleChange}></input>
+            <input className='field w-16' name='initiative' onChange={handleChange} value={formData.initiative} type='number' onBlur={handleSubmit}></input>
           </div>
         </form>
       }
